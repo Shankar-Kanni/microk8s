@@ -60,5 +60,5 @@ jobs:
                 echo ---------------------------------------------------
                 kubectl config view
                 kubectl config get-contexts
-                # kubectl get nodes
+                kubectl get nodes
             
