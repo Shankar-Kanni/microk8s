@@ -58,5 +58,7 @@ jobs:
               run: |
                 kubectl version
                 echo ---------------------------------------------------
-                kubectl get nodes
+                kubectl config view
+                kubectl config get-contexts
+                # kubectl get nodes
             
