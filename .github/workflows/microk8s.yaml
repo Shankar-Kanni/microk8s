@@ -43,22 +43,27 @@ jobs:
             - name: Checkout Repo
               uses: actions/checkout@v4
             
-            - name: Install kubectl CLI
-              uses: azure/setup-kubectl@v3
-              with:
-                version: '${{ inputs.kubectl-version }}'
 
-            - name: Set Kubeconfig file
-              uses: azure/k8s-set-context@v3
-              with:
-                method: kubeconfig
-                kubeconfig: ${{ secrets.K8S_KUBECONFIG }}
-
-            - name: Fetch Kubernetes Cluster Details
+            - name: GIT Tag
               run: |
-                kubectl version
-                echo ---------------------------------------------------
-                kubectl config view
-                kubectl config get-contexts
-                kubectl get nodes
+                GIT_TAG=$(git tag --sort=version:refname | tail -1)
+                echo $GIT_TAG
+            # - name: Install kubectl CLI
+            #   uses: azure/setup-kubectl@v3
+            #   with:
+            #     version: '${{ inputs.kubectl-version }}'
+
+            # - name: Set Kubeconfig file
+            #   uses: azure/k8s-set-context@v3
+            #   with:
+            #     method: kubeconfig
+            #     kubeconfig: ${{ secrets.K8S_KUBECONFIG }}
+
+            # - name: Fetch Kubernetes Cluster Details
+            #   run: |
+            #     kubectl version
+            #     echo ---------------------------------------------------
+            #     kubectl config view
+            #     kubectl config get-contexts
+            #     kubectl get nodes
             
