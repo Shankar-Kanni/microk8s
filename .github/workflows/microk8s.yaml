@@ -47,6 +47,12 @@ jobs:
             - name: GIT Tag
               run: git rev-parse --short HEAD
 
+            - name: Build application
+              id: build
+              run: |
+                RELEASE_TAG=`echo ${GITHUB_REF} | awk -F "/" '{print $NF}'`
+                echo "RELEASE_TAG is ${RELEASE_TAG}"
+
             # - name: Install kubectl CLI
             #   uses: azure/setup-kubectl@v3
             #   with:
