@@ -53,22 +53,22 @@ jobs:
                 RELEASE_TAG=`echo ${GITHUB_REF} | awk -F "/" '{print $NF}'`
                 echo "RELEASE_TAG is ${RELEASE_TAG}"
 
-            # - name: Install kubectl CLI
-            #   uses: azure/setup-kubectl@v3
-            #   with:
-            #     version: '${{ inputs.kubectl-version }}'
+            - name: Install kubectl CLI
+              uses: azure/setup-kubectl@v3
+              with:
+                version: '${{ inputs.kubectl-version }}'
 
-            # - name: Set Kubeconfig file
-            #   uses: azure/k8s-set-context@v3
-            #   with:
-            #     method: kubeconfig
-            #     kubeconfig: ${{ secrets.K8S_KUBECONFIG }}
+            - name: Set Kubeconfig file
+              uses: azure/k8s-set-context@v3
+              with:
+                method: kubeconfig
+                kubeconfig: ${{ secrets.K8S_KUBECONFIG }}
 
-            # - name: Fetch Kubernetes Cluster Details
-            #   run: |
-            #     kubectl version
-            #     echo ---------------------------------------------------
-            #     kubectl config view
-            #     kubectl config get-contexts
-            #     kubectl get nodes
+            - name: Fetch Kubernetes Cluster Details
+              run: |
+                kubectl version
+                echo ---------------------------------------------------
+                kubectl config view
+                kubectl config get-contexts
+                kubectl get nodes
             
