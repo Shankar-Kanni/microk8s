@@ -45,9 +45,8 @@ jobs:
             
 
             - name: GIT Tag
-              run: |
-                GIT_TAG=$(git tag --sort=version:refname | tail -1)
-                echo $GIT_TAG
+              run: git tag --sort=version:refname | tail -1
+
             # - name: Install kubectl CLI
             #   uses: azure/setup-kubectl@v3
             #   with:
