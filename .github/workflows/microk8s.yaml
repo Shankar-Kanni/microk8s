@@ -45,7 +45,7 @@ jobs:
             
 
             - name: GIT Tag
-              run: git tag --sort=version:refname | tail -1
+              run: git rev-parse --short HEAD
 
             # - name: Install kubectl CLI
             #   uses: azure/setup-kubectl@v3
